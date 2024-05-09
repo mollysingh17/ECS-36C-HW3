@@ -24,6 +24,287 @@ try to find solutions online.
 
 ## What We Know
 
+We have to implement the following functions:
+
+### `float postfixEval(const std::vector<std::string>& tokens)`
+
+Write a function named postfixEval such that given a postfix expression, evaluate it and return the result. 
+Assumptions: 
+•  the operands are floats 
+•  the possible operators are +, -, *, / 
+•  the input expression is always a valid and none-empty postfix expression 
+Example: When input is ["2", "4", "7", "∗", "−"], which is 2 − 4 ∗ 7 using infix notation, your function should -26.
+
+2, 4, 7, *, -
+
+Operands:
+2, 4, 7
+
+Operators:
+*, -
+
+input: 2, 4, 7, *, -
+stack: []
+
+input: 4, 7, *, -
+stack: [2]
+
+input: 7, *, -
+stack: [4, 2]
+
+input: *, -
+stack: [7 4 2]
+
+// Take two off of the stack and perform the operation, then push the result back into the stack
+pop once: 7
+pop twice: 4
+operator: *
+result: 28
+
+IF stack is not empty
+push: 28
+
+input: -
+stack: [28 2]
+
+pop: 28
+pop: 2
+stack: []
+operator: -
+result: 2 - 28 = -26
+
+stack IS empty: []
+do not push to stack, instead return -26
+
+if (currentToken == "*") {
+
+} else if (currentToken == "-") {
+
+} else if (currentToken == "+") {
+
+} else if (currentToken == "/") {
+
+} else {
+    
+}
+
+switch (currentToken) {
+    case "*":
+        let firstOperand = stack.pop()
+        let secondOperand = stack.pop()
+        let result = firstOperand * secondOperand
+        if (!stack.empty()) {
+            stack.push(result)
+        }
+    case "-":
+        let firstOperand = stack.pop()
+        let secondOperand = stack.pop()
+        let result = firstOperand - secondOperand
+        if (!stack.empty()) {
+            stack.push(result)
+        }
+    case "+":
+        let firstOperand = stack.pop()
+        let secondOperand = stack.pop()
+        let result = firstOperand + secondOperand
+        if (!stack.empty()) {
+            stack.push(result)
+        }
+    case "/":
+        let firstOperand = stack.pop()
+        let secondOperand = stack.pop()
+        let result = firstOperand / secondOperand
+        if (!stack.empty()) {
+            stack.push(result)
+        }
+    default:
+        // read the number probably using atoi and push to stack
+}
+
+### `bool validParentheses(const std::string& s)`
+
+Valid examples:
+
+"()"
+stack: []
+(, stack: [ ( ]
+), pop: "("
+
+"abcdef"
+stack: []
+return true;
+
+"[abc](def)"
+
+input: "[abc](def)"
+
+stack: []
+token: "[" -> add to stack
+
+stack: [ "[" ]
+token: "a" -> skip
+
+stack: [ "[" ]
+token: "b" -> skip
+
+stack: [ "[" ]
+token: "c" -> skip
+
+stack: [ "[" ]
+token: "]" -> pop, and check if they are compatible
+pop: "["
+compatible?
+
+stack: []
+token: "(" -> push to stack
+
+stack: [ "(" ]
+token: "d" -> skip
+
+stack: [ "(" ]
+token: "e" -> skip
+
+stack: [ "(" ]
+token: "f" -> skip
+
+stack: [ "(" ]
+token: ")" -> pop, check for compatibility
+pop: "("
+compatible? yes
+
+return true;
+
+FILO:
+"{([hijk])}"
+
+input: "{([hijk])}"
+
+stack: []
+token: "{" -> push to stack
+
+stack: [ "{" ]
+token: "(" -> push to stack
+
+stack: ["(" "{"]
+token: "[" -> push to stack
+
+stack: ["[" "(" "{"]
+token: h -> skip
+token: i -> skip
+token: j -> skip
+token: k -> skip
+
+stack: ["[" "(" "{"]
+token: "]" -> pop, check for compatibility
+pop: "["
+compatible!
+
+stack: ["(" "{"]
+token: ")" -> check if stack is empty....if so, return false! pop, check for compatibility
+pop: "("
+compatible!
+
+stack: ["{"]
+token: "}" -> pop, check for compatibility
+pop: "{"
+compatible!
+
+return true;
+
+Invalid examples:
+"{]"
+
+"abcd(ef"
+
+stack: []
+a: skip
+b: skip
+c: skip
+d: skip
+( -> push to stack
+e: skip
+f: skip
+
+if (!stack.empty()) return false;
+
+return true;
+
+"[abc}{def)"
+
+input: "[abc}{def)"
+
+stack: []
+token: "[" -> push them to stack
+
+stack: [ "[" ]
+token: a -> skip
+
+stack: [ "[" ]
+token: b -> skip
+
+stack: [ "[" ]
+token: c -> skip
+
+stack: [ "[" ]
+token: } -> pop, and check for compatibility
+pop: "["
+compatible? no...return false;
+
+stack: []
+
+loop per character in string, token = str[i]
+inside loop:
+switch (token) {
+    case "[":
+        // Push character to stack
+    case "{":
+        // Push character to stack
+    case "(":
+        // Push character to stack
+    case "]":
+        // If stack is empty, return false
+        // Pop and check if it is the complement
+        // If it is, keep going. If it is not, return false
+    case "}":
+        // If stack is empty, return false
+        // Pop and check if it is the complement
+        // If it is, keep going. If it is not, return false
+    case ")":
+        // If stack is empty, return false
+        // Pop and check if it is the complement
+        // If it is, keep going. If it is not, return false
+    default:
+        // do nothing
+        break;
+}
+
+// After your loop:
+
+if (stack.Empty) {
+    return true; // Proccesed everything!
+} else {
+    return false;
+}
+
+### `void Stack2::push(int x)`
+
+a, b, c, d
+stack: [ d c b a ]
+queue: [ a b c d ]
+
+### `void Stack2::pop()`
+
+### `int Stack2::top()`
+
+### `bool Stack2::empty()`
+
+### `std::list<int> concatenate(const std::list<int>& list1, const std::list<int>& list2)`
+
+### `std::list<int> removeNodesFromBeginning(std::list<int>& list, int n)`
+
+### `std::list<int> removeNodes(std::list<int>& list, int i, int n)`
+
+## `void buildHeap(std::vector<int>& arr)`
 
 ## Unanswered Questions
 
