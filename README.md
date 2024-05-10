@@ -288,23 +288,228 @@ if (stack.Empty) {
 
 ### `void Stack2::push(int x)`
 
-a, b, c, d
-stack: [ d c b a ]
+Stack2 {
+
+}
+
+push,
+pop,
+top,
+empty,
+
+^ has to behave like a stack
+
+std:queue
+
+Stack2.push(1)
+Stack2.push(2)
+Stack2.top() -> 2
+Stack2.empty() -> false
+Stack2.pop()
+Stack2.empty() -> false
+Stack2.pop()
+Stack2.empty() -> true
+
+class Stack2 {
+    queue: []
+
+    push() {
+
+    }
+
+    pop() {
+
+    }
+
+    empty() {
+
+    }
+
+    top() {
+
+    }
+}
+
+Adding: a, b, c, d
 queue: [ a b c d ]
+
+Stack: last in, first out
+
+main_queue: [e a b c d]
+temp_queue: []
+
+1. Pop all items from main_queue to push them into temp_queue
+2. Push new item into main_queue
+3. Pop all items from temp_queue back into main_queue, making the new item we added, the front
+
+a, b, c, d
+
+Stack2.push(a)
+
+main_queue: []
+temp_queue: []
+
+1. Pop all items from main_queue to push them into temp_queue
+
+main_queue: []
+temp_queue: []
+
+2. Push new item into main_queue
+main_queue: [ a ]
+temp_queue: []
+
+3. Pop all items from temp_queue to push them into main_queue
+
+main_queue: [ a ]
+temp_queue: []
+
+Stack2.push(b)
+
+push(b)
+main_queue: [ a ]
+temp_queue: []
+
+main_queue = wok_station!
+temp_queue = salad_bar!
+
+1. Pop everything from main_queue into temp_queue
+
+while (!main_queue.empty()) { // Keep going until no one is left in your wok_station
+    temp_queue.push(main_queue.front()) // Add the front of the line to the back of salad_bar
+    main_queue.pop() // Remove the front of the line from the wok_station
+}
+
+2. Tell new kid to get in line at the wok station!
+
+main_queue.push(x)
+
+3. Pop everything back from temp_queue back into main_queue
+
+while (!temp_queue.empty()) {
+    main_queue.push(temp_queue.front())
+    temp_queue.pop()
+}
+
+main_queue: []
+temp_queue: [ a ]
+
+# no cuts -> rules of a queue
+# no saves
+
+# we want to make it look like someone cut in line to the front -> stack
+
+stack2.push(josephine) -> josephine to the front of the line
+Remember: queue.push(josephine) -> josephine to the back of the line
+
+wok_station: [josephine john suzy catherine]
+salad_bar: []
+
+2. Push the new item into main_queue
+
+3. Pop everything from temp_queue into main_queue
+
 
 ### `void Stack2::pop()`
 
+int top = queue.front() // Store the front of the line in a variable
+queue.pop() // Takes the front out of the line
+return top
+
 ### `int Stack2::top()`
+
+return queue.front()
 
 ### `bool Stack2::empty()`
 
+return queue.empty()
+
 ### `std::list<int> concatenate(const std::list<int>& list1, const std::list<int>& list2)`
+
+    <elements of list1, elements of list2>
+    std::list emptyList
+
+    (loop through list1) {
+        push each element to emptyList
+    }
+
+    (look through list2) {
+        push each element to emptyList
+    }
+
+    return emptyList
 
 ### `std::list<int> removeNodesFromBeginning(std::list<int>& list, int n)`
 
+    Example: list = [1, 2, 3, 4, 5], n = 8
+
+    1. [1, 2, 3, 4, 5].pop_front()
+    2. [2, 3, 4, 5].pop_front()
+    3. [3, 4, 5].pop_front()
+    .
+    .
+    5. break, list is empty here, so nothing left to pop!
+
+    Return []
+
+    loop from 1 to n:
+        if (list.empty()) {
+            break;
+        }
+        
+        list.pop_front()
+
+    return list
+    
+
 ### `std::list<int> removeNodes(std::list<int>& list, int i, int n)`
 
+    [1, 2, 3, 4, 5, 6]; i = 2, n = 3
+
+    std::stack precedingElements
+
+    1. Add everything from 1st element to ith element to the stack
+    
+    loop from 1 to i(2 in this case):
+        precedingElements.push(list.front())
+        list.pop_front()
+    
+    stack: [ 2 1 ]
+    list: [3, 4, 5, 6]
+
+    2. Do the same thing as the previous problem, pop_front n times
+
+    loop 1 to n:
+        if (list.empty()) {
+            break;
+        }
+
+        list.pop_front()
+
+    stack: [ 2 1 ]
+    list: [6]
+
+    3. Put everything from the stack back into the list
+
+    while (!stack.empty()) {
+        list.push_front(stack.top())
+        stack.pop()
+    }
+
+    4. return list
+
+    stack: [ 2 1 ]
+    list: [6]
+
+    stack: [1]
+    list: [2 6]
+
+    stack: [0]
+    list: [1 2 6]
+
 ## `void buildHeap(std::vector<int>& arr)`
+
+// Run heap sort
+https://www.programiz.com/dsa/heap-sort
 
 ## Unanswered Questions
 
