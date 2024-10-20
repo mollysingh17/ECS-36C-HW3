@@ -26,6 +26,7 @@ try to find solutions online for your own benefit.
 
 We have to implement the following functions:
 
+Function 1: 
 Write a function named postfixEval such that given a postfix expression, evaluate it and return the result. 
 Assumptions: 
 •  the operands are floats 
@@ -36,9 +37,7 @@ Example: When input is ["2", "4", "7", "∗", "−"], which is 2 − 4 ∗ 7 usi
 Function 2: validParentheses(arr)
 Given a (possibly empty) array containing only alphabet letters and parentheses “(”, “)”, “{”, “}”, “[”, “]”, determine if the string is valid.
 A string is valid if
-•
 Open brackets must be closed by the same type of brackets.
-•
 Open brackets must be closed in the correct order.
 Example: Given input “(ab){[]}”, your function should return True.
 
@@ -56,23 +55,16 @@ Example: Given an linked list 1 → 2 → 3 → 4 → 5 and n = 3, return the li
 
 Function 6: removeNodes(llst, i, n)
 Starting from the ith node in a (possibly empty) linked list, remove the next n nodes, not including the ith node.
-•
 We say the head of the input list is the first node, i.e., i = 1.
-•
 When i = 0, your function should start by removing the head.
 Note:
-•
 n ≥ 0
-•
 i ≥ 0
-•
 i + n ≤ lst.length()
 Example: let lst be a linked list 1 → 2 → 3 → 4 → 5 → 6
-1.
-When i = 2 and n = 3, return the linked list 1 → 2 → 6.
+1. When i = 2 and n = 3, return the linked list 1 → 2 → 6.
 Explanation: The second node (i = 2) is 2. Removing the next three nodes (n = 3) means removing nodes 3, 4, and 5. The remaining ones are 1, 2, 6.
-2.
-When i = 0 and n = 3, return the linked list 4 → 5 → 6.
+2. When i = 0 and n = 3, return the linked list 4 → 5 → 6.
 Explanation: Since i = 0, we remove the first three nodes (n = 3) from the beginning of lst, which are 1, 2, 3. The remaining ones are 4, 5, 6.
 
 Function 7: buildHeap(arr)
